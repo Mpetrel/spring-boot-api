@@ -11,12 +11,12 @@ import javax.annotation.Resource;
 
 
 /**
- * Created by madman on 2018/05/03.
+ * Created by madman on 2018/06/29.
  */
 @Service
 @Transactional
 public class SystemUserServiceImpl extends AbstractService<SystemUser> implements SystemUserService {
     @Resource
-    private SystemUserMapper tmSystemUserMapper;
+    private SystemUserMapper tSystemUserMapper;
 
 }

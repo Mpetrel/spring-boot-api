@@ -112,11 +112,11 @@
 
         <!--权限相关依赖-->
         <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring-boot-starter -->
-       <!-- <dependency>
+       <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-starter</artifactId>
             <version>1.4.0</version>
-        </dependency>-->
+        </dependency>
 
         <!--JWT支持-->
         <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->

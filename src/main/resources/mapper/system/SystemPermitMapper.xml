@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.mapper.system.SystemPermitMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.system.SystemPermit">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="permit" jdbcType="VARCHAR" property="permit" />
+    <result column="parent" jdbcType="BIGINT" property="parent" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+  </resultMap>
+
+  <select id="findPermitByRoleIds" parameterType="java.util.List" resultMap="BaseResultMap">
+    SELECT DISTINCT
+    t1.*
+    FROM
+    t_system_permit t1
+    LEFT JOIN t_system_role_permit t2 ON t1.id = t2.permit_id
+    WHERE
+    t2.role_id IN
+    <foreach item="rId" collection="list" separator="," open="(" close=")">
+      #{rId}
+    </foreach>
+  </select>
+</mapper>

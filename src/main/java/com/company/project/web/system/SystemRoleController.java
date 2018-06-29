@@ -1,0 +1,54 @@
+package com.company.project.web.system;
+
+import com.company.project.core.Result;
+import com.company.project.core.ResultGenerator;
+import com.company.project.model.system.SystemRole;
+import com.company.project.service.system.SystemRoleService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+/**
+* Created by madman on 2018/06/29.
+*/
+@RestController
+@RequestMapping("/admin/system/role")
+public class SystemRoleController {
+    @Resource
+    private SystemRoleService systemRoleService;
+
+    @PostMapping
+    public Result add(@RequestBody SystemRole systemRole) {
+        systemRoleService.save(systemRole);
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Integer id) {
+        systemRoleService.deleteById(id);
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @PutMapping
+    public Result update(@RequestBody SystemRole systemRole) {
+        systemRoleService.update(systemRole);
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @GetMapping("/{id}")
+    public Result detail(@PathVariable Integer id) {
+        SystemRole systemRole = systemRoleService.findById(id);
+        return ResultGenerator.genSuccessResult(systemRole);
+    }
+
+    @GetMapping
+    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
+        PageHelper.startPage(page, size);
+        List<SystemRole> list = systemRoleService.findAll();
+        PageInfo pageInfo = new PageInfo(list);
+        return ResultGenerator.genSuccessResult(pageInfo);
+    }
+}
