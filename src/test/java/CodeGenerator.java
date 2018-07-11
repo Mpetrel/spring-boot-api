@@ -18,12 +18,12 @@ import static com.company.project.core.ProjectConstant.*;
 public class CodeGenerator {
     static {
         //在此处设置模块名
-        initPackate("system");
+        initPackate("spider");
     }
     //JDBC配置，请修改为你项目的实际配置
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/seed";
     private static final String JDBC_USERNAME = "root";
-    private static final String JDBC_PASSWORD = "root";
+    private static final String JDBC_PASSWORD = "a0789456?";
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 
     private static final String PROJECT_PATH = System.getProperty("user.dir");//项目在硬盘上的基础路径
@@ -42,7 +42,7 @@ public class CodeGenerator {
     public static void main(String[] args) {
         //genCode("输入表名");
 
-        genCodeByCustomModelName("t_system_permit","SystemPermit");
+        genCodeByCustomModelName("t_tumblr_blog","TumblrBlog");
     }
 
     /**
